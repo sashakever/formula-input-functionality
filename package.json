@@ -6,22 +6,40 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --config .prettierrc.js 'src/**/*.{ts,tsx}' --write",
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.2.0"
+    "@emotion/css": "^11.13.5",
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
+    "clsx": "^2.1.1",
+    "downshift": "^9.0.8",
+    "is-hotkey": "^0.2.0",
+    "is-url": "^1.2.4",
+    "mathjs": "^14.3.0",
+    "next": "15.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "slate": "^0.112.0",
+    "slate-dom": "^0.112.2",
+    "slate-history": "^0.110.3",
+    "slate-react": "^0.112.1",
+    "prettier": "^3.3.2",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
-    "@eslint/eslintrc": "^3"
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
