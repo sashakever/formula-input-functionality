@@ -160,6 +160,7 @@ const FormulaExampleSection: FC = () => {
       </h1>
       <Slate
         editor={editor}
+        //
         initialValue={initialValue}
         onChange={handleChange}>
         <Editable

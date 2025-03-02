@@ -6,7 +6,7 @@ type TokenStore = {
 };
 
 const useStore = create<TokenStore>((set) => ({
-  tokens: [],
+  tokens: ['2', '+', '3'],
   updateTokens: (tokens: string[]) => set(() => ({tokens})),
 }));
 

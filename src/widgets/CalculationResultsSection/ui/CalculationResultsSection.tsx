@@ -9,7 +9,6 @@ const CalculationResultsSection: FC = () => {
   const [result, setResult] = useState<number>(0);
   const [error, setError] = useState<string>('');
   const {tokens} = useStore();
-  console.log('tokens', tokens);
 
   useEffect(() => {
     try {

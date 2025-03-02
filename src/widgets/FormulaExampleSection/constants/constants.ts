@@ -4,21 +4,9 @@ export const initialValue: Descendant[] = [
   {
     type: 'paragraph',
     children: [
-      {
-        type: 'formula',
-        name: 'name 1',
-        category: 'category 1',
-        value: 9,
-        children: [{text: '', bold: true}],
-      },
+      {text: '2'},
       {text: '+'},
-      {
-        type: 'formula',
-        name: 'name 2',
-        category: 'category 2',
-        value: 16,
-        children: [{text: ''}],
-      },
+      {text: '3'},
     ],
   },
 ];
