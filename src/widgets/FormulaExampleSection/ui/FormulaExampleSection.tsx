@@ -64,8 +64,7 @@ const FormulaExampleSection: FC = () => {
   const {data} = useAutocompleteItems();
 
   const formulaItems = (data || FORMULA_VALUES)
-    .filter((c) => c.name.toLowerCase().startsWith(search?.toLowerCase()))
-    .slice(0, 10);
+    .filter((c) => c.name.toLowerCase().startsWith(search?.toLowerCase()));
 
   const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = useCallback(
     (event) => {
@@ -129,13 +128,9 @@ const FormulaExampleSection: FC = () => {
     if (selection && Range.isCollapsed(selection)) {
       const [start] = Range.edges(selection);
       const wordBefore = Editor.before(editor, start, {unit: 'word'});
-      console.log('wordBefore', wordBefore);
       const before = wordBefore && Editor.before(editor, wordBefore);
-      console.log('before', before);
       const beforeRange = before && Editor.range(editor, before, start);
-      console.log('beforeRange', beforeRange);
       const beforeText = beforeRange && Editor.string(editor, beforeRange);
-      console.log('beforeText', beforeText);
       const beforeMatch = beforeText && beforeText.match(/^@(\w+)$/);
       const after = Editor.after(editor, start);
       const afterRange = Editor.range(editor, start, after);
@@ -152,6 +147,9 @@ const FormulaExampleSection: FC = () => {
 
     setTarget(null);
   };
+
+  console.log('target', target);
+  console.log('formulaItems', formulaItems);
 
   return (
     <div className='flex flex-col gap-1'>
@@ -172,13 +170,13 @@ const FormulaExampleSection: FC = () => {
           <Portal>
             <div
               ref={ref}
-              className='top-[-9999px] left-[-9999px] absolute z-10 p-1 bg-slate-600 rounded shadow-md'
+              className={clsx('top-[-9999px] left-[-9999px] absolute max-h-96 z-10 p-1 bg-slate-600', 'rounded shadow-md overflow-y-auto')}
               data-cy='formulas-portal'>
               {formulaItems.map((item, i) => (
                 <div
                   key={item.id}
                   className={clsx(
-                    'text-slate-100 p-1 rounded cursor-pointer',
+                    'text-slate-100 p-1 rounded cursor-pointer flex justify-between gap-4',
                     'hover:bg-slate-700',
                     {'bg-slate-400': i === index},
                   )}
@@ -192,8 +190,11 @@ const FormulaExampleSection: FC = () => {
                     );
                     setTarget(null);
                   }}>
-                  <p className='text-[18px] mb-0.5'>{item.name}</p>
-                  <p className='text-[12px] text-slate-300'>{item.category}</p>
+                  <div>
+                    <p className='text-[18px] mb-0.5'>{item.name}</p>
+                    <p className='text-[12px] text-slate-300'>{item.category}</p>
+                  </div>
+                  <span className='text-[14px]'>{item.value}</span>
                 </div>
               ))}
             </div>
