@@ -63,8 +63,10 @@ const FormulaExampleSection: FC = () => {
   const {updateTokens} = useStore();
   const {data} = useAutocompleteItems();
 
-  const formulaItems = (data || FORMULA_VALUES)
-    .filter((c) => c.name.toLowerCase().startsWith(search?.toLowerCase()));
+  const items = (data || FORMULA_VALUES);
+
+  const formulaItems =  search ? items
+    .filter((c) => c.name.toLowerCase().startsWith(search?.toLowerCase())) : items;
 
   const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = useCallback(
     (event) => {
@@ -148,17 +150,13 @@ const FormulaExampleSection: FC = () => {
     setTarget(null);
   };
 
-  console.log('target', target);
-  console.log('formulaItems', formulaItems);
-
   return (
     <div className='flex flex-col gap-1'>
       <h1 className='text-xl font-bold'>
-        Formula Input (type @ and then formula name to insert formula)
+        Formula Input (type @ and then formula name to insert formula. Example &quot;@name&quot;)
       </h1>
       <Slate
         editor={editor}
-        //
         initialValue={initialValue}
         onChange={handleChange}>
         <Editable
